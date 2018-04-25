@@ -1,8 +1,5 @@
 #include "Board.h";
 
-string Board::filePath = "C:\\Users\\vcharatsidis\\Desktop\\sudoku.txt";
-string Board::horizontal_line_serparator = "----------------------";
-string Board::vertical_line_separator = "| ";
 vector<vector<int>> Board::board(9, vector<int>(9, 0));
 
 Board::Board(vector<vector<int>> board) {
@@ -16,7 +13,11 @@ Board::Board(vector<vector<int>> board) {
 	}
 }
 
-void Board::drawBoard() {
+void Board::drawBoard(vector<vector<int>> board) {
+	const string filePath = "C:\\Users\\vcharatsidis\\Desktop\\sudoku.txt";
+	const string horizontal_line_serparator = "----------------------";
+	const string vertical_line_separator = "| ";
+
 	const int horizontalLines = 2;
 	int boardSize = board.size();
 
