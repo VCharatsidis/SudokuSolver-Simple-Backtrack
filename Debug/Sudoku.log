@@ -1,9 +1,7 @@
-﻿  Board.cpp
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\board.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\board.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\board.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\board.h(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\board.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\board.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+﻿  HardestSudoku.cpp
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\hardestsudoku.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Main.cpp
   Sudoku.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Sudoku\Debug\Sudoku.exe
   Sudoku.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Sudoku\Debug\Sudoku.pdb (Partial PDB)

@@ -1,10 +1,14 @@
 #include "Board.h";
+#include "HardestSudoku.cpp";
 //#include<vector>;
 //using std::vector;
 
 int main() {
-	vector<vector<int>> hardestSudoku(9, vector<int>(9,0));
-	Board* sudokuBoard = new Board(hardestSudoku);
-	sudokuBoard->drawBoard;
+	HardestSudoku* hardestSudokuCreator = new HardestSudoku();
+	vector<vector<int>> hardestSudoku = hardestSudokuCreator->returnHardestSudoku();
 
+	Board* sudokuBoard = new Board(hardestSudoku);
+	sudokuBoard->drawBoard(hardestSudoku);
+
+	return 0;
 };

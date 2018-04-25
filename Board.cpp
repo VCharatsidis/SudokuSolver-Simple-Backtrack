@@ -45,7 +45,13 @@ void Board::drawBoard(vector<vector<int>> board) {
 				}
 				
 				int value = board[row - horizontalLineCounter][column];
-				myfile << std::to_string(value) + " ";
+				string valueToString = std::to_string(value);
+
+				if (value == 0) {
+					valueToString = "_";
+				}
+				
+				myfile << valueToString  + " ";
 			}
 		}
 		myfile << "\n";
