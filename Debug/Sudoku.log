@@ -1,0 +1,8 @@
+﻿  Main.cpp
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Sudoku.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Sudoku\Debug\Sudoku.exe
+  Sudoku.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Sudoku\Debug\Sudoku.pdb (Partial PDB)
