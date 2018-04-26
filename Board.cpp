@@ -13,8 +13,12 @@ Board::Board(vector<vector<int>> board) {
 	}
 }
 
-void Board::playMove(int x, int y, int value) {
-	Board:board[x][y] = value;
+void Board::playMove(SudokuMove move) {
+	Board:board[move.x][move.y] = move.value;
+}
+
+void Board::undoMove() {
+	
 }
 
 void Board::drawBoard(vector<vector<int>> board) {

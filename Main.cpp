@@ -10,7 +10,12 @@ int main() {
 	Board* sudokuBoard = new Board(hardestSudoku);
 	sudokuBoard->drawBoard(hardestSudoku);
 
-	sudokuBoard->playMove(0, 1, 9);
+	SudokuMove* move = new SudokuMove();
+	move->x = 0;
+	move->y = 1;
+	move->value = 0;
+
+	sudokuBoard->playMove(*move);
 	sudokuBoard->drawBoard(sudokuBoard->board);
 
 	return 0;

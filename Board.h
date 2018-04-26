@@ -4,9 +4,12 @@
 #include <iostream>;
 #include <string>;
 #include <fstream>;
+#include <stack>;
+#include "SudokuMove.cpp";
 
 using std::vector;
 using std::string;
+using std::stack;
 
 class Board {
 public:
@@ -15,7 +18,8 @@ public:
 
 	Board(vector<vector<int>> board);
 	static void drawBoard(vector<vector<int>> board);
-	static void playMove(int x, int y, int value);
+	static void playMove(SudokuMove move);
+	static void undoMove();
 };
 
 
