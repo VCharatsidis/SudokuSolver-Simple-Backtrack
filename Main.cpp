@@ -1,5 +1,6 @@
 #include "Board.h";
 #include "HardestSudoku.cpp";
+#include "BoardDrawer.cpp";
 //#include<vector>;
 //using std::vector;
 
@@ -8,7 +9,9 @@ int main() {
 	vector<vector<int>> hardestSudoku = hardestSudokuCreator->returnHardestSudoku();
 
 	Board* sudokuBoard = new Board(hardestSudoku);
-	sudokuBoard->drawBoard(hardestSudoku);
+	BoardDrawer* drawer = new BoardDrawer();
+
+	drawer->draw_board(hardestSudoku);
 
 	SudokuMove* move = new SudokuMove();
 	move->x = 0;
@@ -16,10 +19,10 @@ int main() {
 	move->value = 9;
 
 	sudokuBoard->playMove(*move);
-	sudokuBoard->drawBoard(sudokuBoard->board);
+	drawer->draw_board(sudokuBoard->board);
 
 	sudokuBoard->undoMove();
-	sudokuBoard->drawBoard(sudokuBoard->board);
+	drawer->draw_board(sudokuBoard->board);
 
 	return 0;
 };

@@ -112,6 +112,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="BoardDrawer.cpp" />
     <ClCompile Include="HardestSudoku.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Solver.cpp" />

@@ -18,7 +18,6 @@ public:
 	static stack<SudokuMove> moves_done;
 
 	Board(vector<vector<int>> board);
-	static void drawBoard(vector<vector<int>> board);
 	static void playMove(SudokuMove move);
 	static void undoMove();
 };
