@@ -21,8 +21,8 @@ int main() {
 	sudokuBoard->playMove(*move);
 	drawer->draw_board(sudokuBoard->board);
 
-	sudokuBoard->undoMove();
-	drawer->draw_board(sudokuBoard->board);
+	/*sudokuBoard->undoMove();
+	drawer->draw_board(sudokuBoard->board);*/
 
 	return 0;
 };

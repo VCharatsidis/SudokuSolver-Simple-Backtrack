@@ -14,15 +14,28 @@ Board::Board(vector<vector<int>> board) {
 	}
 }
 
+void Board::assign_value(int x, int y, int value) {
+	Board::board[x][y] = value;
+}
+
 void Board::playMove(SudokuMove move) {
-	Board::board[move.x][move.y] = move.value;
+	int x = move.x;
+	int y = move.y;
+	int value = move.value;
+
+	assign_value(x, y, value);
+
 	Board::moves_done.push(move);
+	
 }
 
 void Board::undoMove() {
 	SudokuMove move_to_undo = Board::moves_done.top();
 
-	Board::board[move_to_undo.x][move_to_undo.y] = empty_box;
+	int x = move_to_undo.x;
+	int y = move_to_undo.y;
+
+	assign_value(x, y, empty_box);
 	Board::moves_done.pop();	
 }
 

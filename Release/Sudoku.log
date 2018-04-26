@@ -4,9 +4,6 @@ c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(7): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(8): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 Main.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\HardestSudoku.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 Main.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
@@ -16,8 +13,8 @@ c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\BoardD
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\BoardDrawer.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\BoardDrawer.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating code
-  9 of 438 functions ( 2.1%) were compiled, the rest were copied from previous compilation.
+  9 of 439 functions ( 2.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    29 functions had inline decision re-evaluated but remain unchanged
+    4 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Sudoku.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Sudoku\Release\Sudoku.exe

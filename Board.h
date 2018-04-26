@@ -1,9 +1,6 @@
 #pragma once
-#include <array>;
 #include <vector>;
-#include <iostream>;
 #include <string>;
-#include <fstream>;
 #include <stack>;
 #include "SudokuMove.cpp";
 
@@ -20,6 +17,7 @@ public:
 	Board(vector<vector<int>> board);
 	static void playMove(SudokuMove move);
 	static void undoMove();
+	static void assign_value(int x, int y, int value);
 };
 
 
