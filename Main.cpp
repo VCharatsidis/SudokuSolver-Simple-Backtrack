@@ -13,9 +13,12 @@ int main() {
 	SudokuMove* move = new SudokuMove();
 	move->x = 0;
 	move->y = 1;
-	move->value = 0;
+	move->value = 9;
 
 	sudokuBoard->playMove(*move);
+	sudokuBoard->drawBoard(sudokuBoard->board);
+
+	sudokuBoard->undoMove();
 	sudokuBoard->drawBoard(sudokuBoard->board);
 
 	return 0;

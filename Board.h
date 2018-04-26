@@ -15,6 +15,7 @@ class Board {
 public:
 
 	static vector<vector<int>> board;
+	static stack<SudokuMove> moves_done;
 
 	Board(vector<vector<int>> board);
 	static void drawBoard(vector<vector<int>> board);

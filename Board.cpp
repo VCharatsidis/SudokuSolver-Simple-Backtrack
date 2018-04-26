@@ -1,28 +1,33 @@
 #include "Board.h";
 
-vector<vector<int>> Board::board(9, vector<int>(9, 0));
+int empty_box = 0;
+int sudoku_size = 9;
+vector<vector<int>> Board::board(sudoku_size, vector<int>(sudoku_size, empty_box));
+stack<SudokuMove> Board::moves_done;
 
 Board::Board(vector<vector<int>> board) {
 
-	int boardSize = board.size();
-
-	for (int i = 0; i < boardSize; i++) {
-		for (int j = 0; j < boardSize; j++) {
+	for (int i = 0; i < sudoku_size; i++) {
+		for (int j = 0; j < sudoku_size; j++) {
 			Board::board[i][j] = board[i][j];
 		}
 	}
 }
 
 void Board::playMove(SudokuMove move) {
-	Board:board[move.x][move.y] = move.value;
+	Board::board[move.x][move.y] = move.value;
+	Board::moves_done.push(move);
 }
 
 void Board::undoMove() {
-	
+	SudokuMove move_to_undo = Board::moves_done.top();
+
+	Board::board[move_to_undo.x][move_to_undo.y] = empty_box;
+	Board::moves_done.pop();	
 }
 
 void Board::drawBoard(vector<vector<int>> board) {
-	const string filePath = "C:\\Users\\vcharatsidis\\Desktop\\sudoku.txt";
+	const string file_path = "C:\\Users\\vcharatsidis\\Desktop\\sudoku.txt";
 	const string horizontal_line_serparator = "----------------------";
 	const string vertical_line_separator = "| ";
 
@@ -33,7 +38,7 @@ void Board::drawBoard(vector<vector<int>> board) {
 	int drawWidth = boardSize;
 
 	std::ofstream myfile;
-	myfile.open(filePath);
+	myfile.open(file_path);
 
 	int horizontalLineCounter = 0;
 
