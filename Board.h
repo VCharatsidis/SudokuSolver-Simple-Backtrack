@@ -15,9 +15,11 @@ public:
 	static stack<SudokuMove> moves_done;
 
 	Board(vector<vector<int>> board);
-	static void playMove(SudokuMove move);
-	static void undoMove();
+	static void play_move(SudokuMove move);
+	static void undo_move();
 	static void assign_value(int x, int y, int value);
+	static stack<SudokuMove> legal_moves();
+	static bool is_empty(int x, int y);
 };
 
 
