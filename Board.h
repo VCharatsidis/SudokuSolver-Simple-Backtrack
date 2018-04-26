@@ -23,6 +23,8 @@ public:
 	static stack<SudokuMove> legal_moves();
 	static bool is_empty(int x, int y);
 	static stack<tuple<int, int>> empty_boxes();
+	static vector<int> find_container_box(int x, int y);
+	static int intpart(int x, double y);
 };
 
 

@@ -18,7 +18,7 @@ Main.cpp(6): warning C4067: unexpected tokens following preprocessor directive -
 Main.cpp(7): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Scores.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating code
-  1 of 864 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 865 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

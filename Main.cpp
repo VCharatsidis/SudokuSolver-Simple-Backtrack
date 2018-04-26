@@ -51,5 +51,9 @@ int main() {
 	double kati = sc->scores.at(8);
 	cout << "score of 1 " + std::to_string(kati) << std::endl;
 
+	// test intpart.
+	int test = sudokuBoard->intpart(8, 3);
+	cout << "intpart " + std::to_string(test);
+
 	return 0;
 };

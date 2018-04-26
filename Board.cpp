@@ -1,4 +1,5 @@
 #include "Board.h";
+#include <math.h>;
 
 int empty_box = 0;
 int sudoku_size = 9;
@@ -56,7 +57,29 @@ stack<tuple<int, int>> Board::empty_boxes() {
 }
 
 stack<SudokuMove> Board::legal_moves() {
+	stack<tuple<int, int>> emptyBoxes = empty_boxes();
 
+	while (!emptyBoxes.empty()) {
+		tuple<int, int> box = emptyBoxes.top();
+		int x = std::get<0>(emptyBoxes.top());
+		int y = std::get<1>(emptyBoxes.top());
+
+	}
+}
+
+vector<int> Board::find_container_box(int row, int column) {
+	double container_box_size = sqrt(sudoku_size);
+
+	int x = intpart(row, container_box_size);
+	int y = intpart(column, container_box_size);
+}
+
+int Board::intpart(int coordinate, double container_box_size) {
+	int intpart = coordinate / container_box_size;
+	return intpart;
+	/*modf(container_box_size, &intpart);
+
+	return static_cast<int>(intpart);*/
 }
 
 
