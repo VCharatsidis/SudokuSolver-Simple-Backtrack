@@ -12,5 +12,6 @@ private:
 	Scores() {};
 	Scores(Scores const&) {};
 	static Scores* m_pInstance;
-
+	Scores& operator = (Scores const&); // assign op. hidden
+	//~Scores();
 };

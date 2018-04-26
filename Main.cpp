@@ -4,6 +4,7 @@
 #include <tuple>;
 #include <iostream>;
 #include <string>;
+#include "Scores.h";
 
 using std::tuple;
 using std::cout;
@@ -43,6 +44,12 @@ int main() {
 		eb.pop();
 		cout << std::to_string(x)+","+ std::to_string(y) + " | ";
 	}
+	cout << " " << std::endl;
+
+	// test Scores.
+	Scores* sc = Scores::instance();
+	double kati = sc->scores.at(8);
+	cout << "score of 1 " + std::to_string(kati) << std::endl;
 
 	return 0;
 };

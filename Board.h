@@ -14,6 +14,7 @@ public:
 
 	static vector<vector<int>> board;
 	static stack<SudokuMove> moves_done;
+	//static Scores*
 
 	Board(vector<vector<int>> board);
 	static void play_move(SudokuMove move);
