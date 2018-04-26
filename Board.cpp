@@ -18,8 +18,9 @@ void Board::assign_value(int x, int y, int value) {
 }
 
 void Board::play_move(SudokuMove move) {
-	int x = move.x;
-	int y = move.y;
+	int x = std::get<0>(move.coordinates);
+	int y = std::get<1>(move.coordinates);
+
 	int value = move.value;
 
 	assign_value(x, y, value);
@@ -28,8 +29,8 @@ void Board::play_move(SudokuMove move) {
 
 void Board::undo_move() {
 	SudokuMove move_to_undo = Board::moves_done.top();
-	int x = move_to_undo.x;
-	int y = move_to_undo.y;
+	int x = std::get<0>(move_to_undo.coordinates);
+	int y = std::get<1>(move_to_undo.coordinates);
 
 	assign_value(x, y, empty_box);
 	Board::moves_done.pop();	
@@ -42,6 +43,8 @@ bool Board::is_empty(int x, int y) {
 stack<SudokuMove> Board::legal_moves() {
 
 }
+
+
 
 
 

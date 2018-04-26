@@ -1,5 +1,7 @@
+#include <tuple>
+using std::tuple;
+
 struct SudokuMove{
-	int x;
-	int y;
+	tuple<int, int> coordinates;
 	int value;
 };

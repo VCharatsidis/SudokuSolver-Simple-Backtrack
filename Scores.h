@@ -1,12 +1,12 @@
-#include <hash_map>;
-using std::hash_map;
+#include <unordered_map>;
+using std::unordered_map;
 
 /* Singleton class */
 
 class Scores {
 public:
 	static Scores* instance();
-	static hash_map<int, double> scores;
+	static unordered_map<int, double> scores;
 	
 
 private:

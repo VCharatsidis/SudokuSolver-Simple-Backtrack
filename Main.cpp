@@ -1,8 +1,10 @@
 #include "Board.h";
 #include "HardestSudoku.cpp";
 #include "BoardDrawer.cpp";
+#include <tuple>;
 //#include<vector>;
 //using std::vector;
+using std::tuple;
 
 int main() {
 	HardestSudoku* hardestSudokuCreator = new HardestSudoku();
@@ -14,14 +16,15 @@ int main() {
 	drawer->draw_board(hardestSudoku);
 
 	SudokuMove* move = new SudokuMove();
-	move->x = 0;
-	move->y = 1;
-	move->value = 9;
+	
+	std::get<0>(move->coordinates) = 0 ;
+	std::get<1>(move->coordinates) = 1 ;
+	move->value = 7;
 
-	sudokuBoard->playMove(*move);
+	sudokuBoard->play_move(*move);
 	drawer->draw_board(sudokuBoard->board);
 
-	sudokuBoard->undoMove();
+	sudokuBoard->undo_move();
 	drawer->draw_board(sudokuBoard->board);
 
 	return 0;

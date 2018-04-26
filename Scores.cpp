@@ -4,7 +4,7 @@
 using std::pair;
 
 Scores* Scores::m_pInstance = NULL;
-hash_map<int, double> Scores::scores;
+unordered_map<int, double> Scores::scores;
 
 Scores* Scores::instance() {
 	
