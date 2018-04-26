@@ -7,6 +7,7 @@
 using std::vector;
 using std::string;
 using std::stack;
+using std::tuple;
 
 class Board {
 public:
@@ -20,6 +21,7 @@ public:
 	static void assign_value(int x, int y, int value);
 	static stack<SudokuMove> legal_moves();
 	static bool is_empty(int x, int y);
+	static stack<tuple<int, int>> empty_boxes();
 };
 
 

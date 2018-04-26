@@ -8,7 +8,6 @@ public:
 	static Scores* instance();
 	static unordered_map<int, double> scores;
 	
-
 private:
 	Scores() {};
 	Scores(Scores const&) {};
