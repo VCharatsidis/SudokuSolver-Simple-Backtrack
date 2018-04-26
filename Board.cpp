@@ -13,6 +13,10 @@ Board::Board(vector<vector<int>> board) {
 	}
 }
 
+void Board::playMove(int x, int y, int value) {
+	Board:board[x][y] = value;
+}
+
 void Board::drawBoard(vector<vector<int>> board) {
 	const string filePath = "C:\\Users\\vcharatsidis\\Desktop\\sudoku.txt";
 	const string horizontal_line_serparator = "----------------------";

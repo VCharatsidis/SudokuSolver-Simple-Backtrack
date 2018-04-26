@@ -5,11 +5,19 @@ c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  HardestSudoku.cpp
-HardestSudoku.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Board.cpp(17): warning C4102: 'Board': unreferenced label
+  Main.cpp
+Main.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\Board.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Main.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\HardestSudoku.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating code
-  3 of 332 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+  10 of 333 functions ( 3.0%) were compiled, the rest were copied from previous compilation.
     1 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    18 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Sudoku.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Sudoku\Release\Sudoku.exe

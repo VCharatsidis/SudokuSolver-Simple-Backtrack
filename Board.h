@@ -15,6 +15,7 @@ public:
 
 	Board(vector<vector<int>> board);
 	static void drawBoard(vector<vector<int>> board);
+	static void playMove(int x, int y, int value);
 };
 
 
