@@ -19,12 +19,11 @@ public:
 	Board(vector<vector<int>> board);
 	static void play_move(SudokuMove move);
 	static void undo_move();
-	static void assign_value(int x, int y, int value);
+	static void assign_value(Box box, int value);
 	static stack<SudokuMove> legal_moves();
-	static bool is_empty(int x, int y);
-	static stack<tuple<int, int>> empty_boxes();
-	static vector<int> find_container_box(int x, int y);
-	static int intpart(int x, double y);
+	static bool is_empty(Box box);
+	static stack<Box> empty_boxes();
+	static Box find_container_starting_box(Box b);
 };
 
 

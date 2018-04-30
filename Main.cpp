@@ -20,9 +20,8 @@ int main() {
 	drawer->draw_board(hardestSudoku);
 
 	SudokuMove* move = new SudokuMove();
-	
-	std::get<0>(move->coordinates) = 0 ;
-	std::get<1>(move->coordinates) = 1 ;
+	Box* box = new Box(0, 1);
+	move->box = box;
 	move->value = 7;
 
 	//test play_move;
@@ -34,13 +33,15 @@ int main() {
 	drawer->draw_board(sudokuBoard->board);
 
 	// test empty_boxes;
-	stack<tuple<int, int>> eb = sudokuBoard->empty_boxes();
+	stack<Box> eb = sudokuBoard->empty_boxes();
 	int number_of_empty_boxes = eb.size();
 	cout << "empty boxes number " + std::to_string(number_of_empty_boxes) << std::endl;
 	
 	for (int i = 0; i < number_of_empty_boxes; i++) {
-		int x = std::get<0>(eb.top());
-		int y = std::get<1>(eb.top());
+		Box box = eb.top();
+
+		int x = box.row;
+		int y = box.column;
 		eb.pop();
 		cout << std::to_string(x)+","+ std::to_string(y) + " | ";
 	}
@@ -48,12 +49,32 @@ int main() {
 
 	// test Scores.
 	Scores* sc = Scores::instance();
-	double kati = sc->scores.at(8);
+	double kati = sc->scores.at(1);
 	cout << "score of 1 " + std::to_string(kati) << std::endl;
 
-	// test intpart.
-	int test = sudokuBoard->intpart(8, 3);
-	cout << "intpart " + std::to_string(test);
+	//test find_container_box
+	//container box is denoted by its first element.
+	Box* box1 = new Box(0, 0);
+	Box container_box1 = sudokuBoard->find_container_starting_box(*box1);
+
+	Box* box2 = new Box(3, 7);
+	Box container_box2 = sudokuBoard->find_container_starting_box(*box2);
+
+	Box* box3 = new Box(8, 8);
+	Box container_box3 = sudokuBoard->find_container_starting_box(*box3);
+
+	string x1 = std::to_string(container_box1.row);
+	string y1 = std::to_string(container_box1.column);
+
+	string x2 = std::to_string(container_box2.row);
+	string y2 = std::to_string(container_box2.column);
+
+	string x3 = std::to_string(container_box3.row);
+	string y3 = std::to_string(container_box3.column);
+
+	cout << "container box1 " + x1 + " , " + y1 << std::endl;
+	cout << "container box2 " + x2 + " , " + y2 << std::endl;
+	cout << "container box3 " + x3 + " , " + y3 << std::endl;
 
 	return 0;
 };

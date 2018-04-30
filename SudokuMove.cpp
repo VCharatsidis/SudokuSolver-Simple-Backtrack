@@ -1,7 +1,6 @@
-#include <tuple>
-using std::tuple;
+#include "Box.cpp"
 
 struct SudokuMove{
-	tuple<int, int> coordinates;
+	Box* box;
 	int value;
 };
