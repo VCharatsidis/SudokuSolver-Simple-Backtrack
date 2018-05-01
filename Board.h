@@ -19,7 +19,7 @@ public:
 	static void play_move(SudokuMove move);
 	static void undo_move();
 	static void assign_value(Box box, int value);
-	static stack<SudokuMove> legal_moves();
+	static vector<SudokuMove> legal_moves();
 	static bool is_empty(Box box);
 	static stack<Box> empty_boxes();
 	static Box find_container_starting_box(Box box);

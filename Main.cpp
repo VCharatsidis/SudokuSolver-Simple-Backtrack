@@ -91,17 +91,21 @@ int main() {
 	else {
 		valid_string = "false";
 	}
-	cout << "is valid [0,1] : "+ std::to_string(valid_value)+" "+ valid_string;
+	cout << "is valid [0,1] : "+ std::to_string(valid_value)+" "+ valid_string << std::endl;
+
 	//check legal_moves
-	/*stack<SudokuMove> moves = sudokuBoard->legal_moves();
-	cout << "legal moves of box [0,1] ";
+	vector<SudokuMove> moves = sudokuBoard->legal_moves();
 	int size = moves.size();
+	cout << "legal moves of box [8,8] "+std::to_string(size);
+	
 	for (int i = 0; i < size; i++) {
-		SudokuMove current = moves.top();
-		if (current.box->row == 0 && current.box->column == 1) {
+		SudokuMove current = moves[i];
+		//cout << " row " + std::to_string(current.value);
+		Box* currBox = current.box;
+		if (currBox->row == 8 && currBox->column == 8) {
 			cout << " " + std::to_string(current.value);
 		}	
-	}*/
+	}
 
 	return 0;
 };

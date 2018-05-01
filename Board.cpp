@@ -49,38 +49,38 @@ stack<Box> Board::empty_boxes() {
 
 	for (int row = 0; row < sudoku_size; row++) {
 		for (int column = 0; column < sudoku_size; column++) {
-			Box* box = new Box(row, column);
+			Box box = Box(row, column);
 			
-			if (Board::is_empty(*box)) {
-				emptyBoxes.push(*box);
+			if (Board::is_empty(box)) {
+				emptyBoxes.push(box);
 			}
 		}
 	}
-
 	return emptyBoxes;
 }
 
-stack<SudokuMove> Board::legal_moves() {
-	stack<SudokuMove> legal_moves;
-
+vector<SudokuMove> Board::legal_moves() {
+	vector<SudokuMove> legal_moves;
 	stack<Box> empty_boxes = Board::empty_boxes();
+	std::cout << " empty_boxes size " +std::to_string(empty_boxes.size()) << std::endl;
 	bool empty_box_exists = !empty_boxes.empty();
 
 	while (empty_box_exists) {
-		Box box = empty_boxes.top();
-
+		Box* box = &empty_boxes.top();
+		
 		for (int value = 1; value < sudoku_size+1; value++) {
-			SudokuMove* move = new SudokuMove();
+			SudokuMove move ;
 	
-			move->box = &box;
-			move->value = value;
+			move.box = box;
+			move.value = value;
 
-			if (is_move_valid(*move)) {
-				legal_moves.push(*move);
+			if (is_move_valid(move)) {
+				legal_moves.push_back(move);
 			}
 		}
 
 		empty_boxes.pop();
+		empty_box_exists = !empty_boxes.empty();
 	}
 	return legal_moves;
 }
@@ -93,13 +93,14 @@ bool Board::is_move_valid(SudokuMove move) {
 	bool valid_row = is_value_valid(board[row], value);
 
 	if (valid_row) {
-		std::cout << " valid row " << std::endl;
+		
 		vector<int> column_boxes = gather_column_boxes(column);
 		bool valid_column = is_value_valid(column_boxes, value);
 
 		if (valid_column) {
-			std::cout << " valid column " << std::endl;
-			vector<int> container_boxes = gather_container_boxes(*move.box);
+			
+			Box box = find_container_starting_box(*move.box);
+			vector<int> container_boxes = gather_container_boxes(box);
 			bool valid_container = is_value_valid(container_boxes, value);
 
 			if (valid_container) {
@@ -128,7 +129,7 @@ vector<int> Board::gather_container_boxes(Box starting_box) {
 	int start_column = starting_box.column;
 	int end_column = start_column + container_size;
 
-	std::cout << " start_row " + std::to_string(start_row) + " start_column " + std::to_string(start_column) << std::endl;
+	//std::cout << " start_row " + std::to_string(start_row) + " start_column " + std::to_string(start_column) << std::endl;
 	for (int x = start_row; x < end_row; x++) {
 		for (int y = start_column; y < end_column; y++) {
 			container_boxes.push_back(Board::board[x][y]);
@@ -149,18 +150,17 @@ bool Board::is_value_valid(vector<int> box_structure, int value) {
 
 		if (is_not_valid) {
 			return false;
-		}
-			
+		}	
 	}
 
 	return true;
 }
 
 Box Board::find_container_starting_box(Box box) {
-	std::cout << "  box.row " + std::to_string(box.row) + " box.column " + std::to_string(box.column) << std::endl;
+	
 	int container_x = box.row/container_size;
 	int container_y = box.column/container_size;
-	std::cout << " container_x " + std::to_string(container_x) + " container_y " + std::to_string(container_y) << std::endl;
+
 	int starting_box_x = container_x * container_size;
 	int starting_box_y = container_y * container_size;
 
