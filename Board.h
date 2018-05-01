@@ -7,7 +7,6 @@
 using std::vector;
 using std::string;
 using std::stack;
-using std::tuple;
 
 class Board {
 public:
@@ -23,7 +22,11 @@ public:
 	static stack<SudokuMove> legal_moves();
 	static bool is_empty(Box box);
 	static stack<Box> empty_boxes();
-	static Box find_container_starting_box(Box b);
+	static Box find_container_starting_box(Box box);
+	static bool is_move_valid(SudokuMove move);
+	static bool validity_check(vector<int> box_structure, int value);
+	static vector<int> gather_column_boxes(int given_column);
+	static vector<int> gather_container_boxes(Box box);
 };
 
 

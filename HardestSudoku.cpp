@@ -31,7 +31,7 @@ public:
 
 		hardestSudoku[7][2] = 8;
 		hardestSudoku[7][3] = 5;
-		hardestSudoku[7][7] = 8;
+		hardestSudoku[7][7] = 1;
 
 		hardestSudoku[8][1] = 9;
 		hardestSudoku[8][6] = 4;
