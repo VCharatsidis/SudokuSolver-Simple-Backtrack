@@ -54,7 +54,7 @@ int main() {
 
 	//test find_container_box
 	//container box is denoted by its first element.
-	Box* box1 = new Box(0, 0);
+	Box* box1 = new Box(0, 1);
 	Box container_box1 = sudokuBoard->find_container_starting_box(*box1);
 
 	Box* box2 = new Box(3, 7);
@@ -75,58 +75,11 @@ int main() {
 	cout << "container box1 " + x1 + " , " + y1 << std::endl;
 	cout << "container box2 " + x2 + " , " + y2 << std::endl;
 	cout << "container box3 " + x3 + " , " + y3 << std::endl;
-	//check validity_check
-	/*string value_is_valid;
-	vector<int> row1 = sudokuBoard->board[6];
-	bool valid_row = sudokuBoard->validity_check(row1, 8);
-	if (valid_row) {
-		value_is_valid = " True ";
-	}
-	else {
-		value_is_valid = " False";
-	}
-	cout << " check row 0 value 8 " + value_is_valid << std::endl;
-
-	valid_row = sudokuBoard->validity_check(row1, 2);
-	if (valid_row) {
-		value_is_valid = " True ";
-	}
-	else {
-		value_is_valid = " False";
-	}
-	cout << " check row 0 value 2 " + value_is_valid << std::endl;
-
-	valid_row = sudokuBoard->validity_check(row1, 3);
-	if (valid_row) {
-		value_is_valid = " True ";
-	}
-	else {
-		value_is_valid = " False";
-	}
-	cout << " check row 0 value 3 " + value_is_valid << std::endl;
-
-	valid_row = sudokuBoard->validity_check(row1, 4);
-	if (valid_row) {
-		value_is_valid = " True ";
-	}
-	else {
-		value_is_valid = " False";
-	}
-	cout << " check row 0 value 4 " + value_is_valid << std::endl;
-
-	valid_row = sudokuBoard->validity_check(row1, 1);
-	if (valid_row) {
-		value_is_valid = " True ";
-	}
-	else {
-		value_is_valid = " False";
-	}
-	cout << " check row 0 value 1 " + value_is_valid << std::endl;*/
 
  	//check is_move_valid
 	SudokuMove* valid_move = new SudokuMove();
-	Box* box_valid = new Box(0, 1);
-	int valid_value = 2;
+	Box* box_valid = new Box(0, 3);
+	int valid_value = 3;
 	valid_move->box = box_valid;
 	valid_move->value = valid_value;
 
