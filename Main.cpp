@@ -1,7 +1,6 @@
 #include "Board.h";
 #include "HardestSudoku.cpp";
 #include "BoardDrawer.cpp";
-#include <tuple>;
 #include <iostream>;
 #include <string>;
 #include "Scores.h";
@@ -100,8 +99,8 @@ int main() {
 	
 	for (int i = 0; i < size; i++) {
 		SudokuMove current = moves[i];
-		//cout << " row " + std::to_string(current.value);
 		Box* currBox = current.box;
+
 		if (currBox->row == 8 && currBox->column == 8) {
 			cout << " " + std::to_string(current.value);
 		}	

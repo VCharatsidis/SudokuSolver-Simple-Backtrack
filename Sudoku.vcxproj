@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Scores.h" />
+    <ClInclude Include="Solver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

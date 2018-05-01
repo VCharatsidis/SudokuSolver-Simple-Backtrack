@@ -5,22 +5,27 @@
 #include <iostream>;
 
 int empty_box_value = 0;
-int sudoku_size = 9;
-int container_size = sqrt(sudoku_size);
+int container_size;
 
-vector<vector<int>> Board::board(sudoku_size, vector<int>(sudoku_size, empty_box_value));
+int Board::sudoku_size;
+vector<vector<int>> Board::board;//(sudoku_size, vector<int>(sudoku_size, empty_box_value));
 stack<SudokuMove> Board::moves_done;
 
 Board::Board(vector<vector<int>> board) {
-	for (int row = 0; row < sudoku_size; row++) {
+	sudoku_size = board.size();
+	container_size = sqrt(sudoku_size);
+	Board::board = board;
+	/*for (int row = 0; row < sudoku_size; row++) {
 		for (int column = 0; column < sudoku_size; column++) {
 			Box* box = new Box(row, column);
 			int value = board[row][column];
 
 			assign_value(*box, value);
 		}
-	}
+	}*/
 }
+
+
 
 void Board::assign_value(Box box, int value) {
 	Board::board[box.row][box.column] = value;
