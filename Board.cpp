@@ -172,6 +172,18 @@ Box Board::find_container_starting_box(Box box) {
 	Box* starting_box = new Box(starting_box_x, starting_box_y);
 	return *starting_box;
 }
+
+bool Board::game_over() {
+	stack<Box> empties = empty_boxes();
+	bool game_over = (empties.size() == 0);
+
+	if (game_over) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
  
 
 

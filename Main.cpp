@@ -3,7 +3,7 @@
 #include "BoardDrawer.cpp";
 #include <iostream>;
 #include <string>;
-#include "Scores.h";
+#include "Solver.h";
 
 using std::tuple;
 using std::cout;
@@ -45,11 +45,6 @@ int main() {
 		cout << std::to_string(x)+","+ std::to_string(y) + " | ";
 	}
 	cout << " " << std::endl;
-
-	// test Scores.
-	Scores* sc = Scores::instance();
-	double kati = sc->scores.at(1);
-	cout << "score of 1 = " + std::to_string(kati) << std::endl;
 
 	//test find_container_box
 	//container box is denoted by its first element.
@@ -105,6 +100,9 @@ int main() {
 			cout << " " + std::to_string(current.value);
 		}	
 	}
+	//check solver
+	Solver solver = Solver(sudokuBoard);
+	solver.solve();
 
 	return 0;
 };

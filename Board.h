@@ -25,6 +25,7 @@ public:
 	static bool is_move_valid(SudokuMove move);
 	static vector<int> gather_column_boxes(int given_column);
 	static vector<int> gather_container_boxes(Box box);
+	static bool game_over();
 
 private:
 	static void assign_value(Box box, int value);

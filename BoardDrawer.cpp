@@ -17,7 +17,7 @@ public:
 
 	void draw_board(vector<vector<int>> board) {
 		int boardSize = board.size();
-
+	
 		int drawHeight = boardSize + horizontalLines;
 		int drawWidth = boardSize;
 
@@ -54,5 +54,15 @@ public:
 			myfile << "\n";
 		}
 		myfile.close();
+	}
+
+	string place(int place) {
+		string space = "";
+
+		for (int i = 0; i < place; i++) {
+			space = space + " ";
+		}
+
+		return space;
 	}
 };
