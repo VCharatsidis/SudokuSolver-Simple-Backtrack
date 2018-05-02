@@ -9,37 +9,49 @@ int container_size;
 
 int Board::sudoku_size;
 vector<vector<int>> Board::board;//(sudoku_size, vector<int>(sudoku_size, empty_box_value));
-stack<SudokuMove> Board::moves_done;
+stack<SudokuMove*> Board::moves_done;
 
 Board::Board(vector<vector<int>> board) {
 	sudoku_size = board.size();
 	container_size = sqrt(sudoku_size);
 	Board::board = board;
-	/*for (int row = 0; row < sudoku_size; row++) {
-		for (int column = 0; column < sudoku_size; column++) {
-			Box* box = new Box(row, column);
-			int value = board[row][column];
-
-			assign_value(*box, value);
-		}
-	}*/
+	
 }
 
-void Board::assign_value(Box box, int value) {
-	Board::board[box.row][box.column] = value;
+void Board::assign_value(Box* box, int value) {
+	Board::board[box->row][box->column] = value;
 }
 
-void Board::play_move(SudokuMove move) {
-	int value = move.value;
-
-	assign_value(*move.box, value);
+void Board::play_move(SudokuMove* move) {
+	int value = move->value;
+	//std::cout << "Play move " + std::to_string(move->box->row) + ", " + std::to_string(move->box->column) +" value: "+ std::to_string(move->value) << std::endl;
+	//std::cout << "" << std::endl;
+	assign_value(move->box, value);
 	Board::moves_done.push(move);
+
+	stack<SudokuMove*> s;
+	//s = moves_done;
+	//print_stack(s);
+}
+
+void Board::print_stack(stack<SudokuMove*> c) {
+	std::cout << "" << std::endl;
+	while (!c.empty()) {
+		SudokuMove m = *c.top();
+		Box b = *m.box;
+		int x = b.row;
+		int y = b.column;
+		std::cout << std::to_string(x) + ", " + std::to_string(y) + " value " + std::to_string(m.value) + "||";
+		c.pop();
+	}
+	std::cout << "" << std::endl;
 }
 
 void Board::undo_move() {
-	SudokuMove move_to_undo = Board::moves_done.top();
-
-	assign_value(*move_to_undo.box, empty_box_value);
+	
+	SudokuMove move_to_undo = *Board::moves_done.top();
+	//std::cout << "Undo move "+std::to_string(move_to_undo.box->row)+", "+std::to_string(move_to_undo.box->column) + " value: " + std::to_string(move_to_undo.value) << std::endl;
+	assign_value(move_to_undo.box, empty_box_value);
 	Board::moves_done.pop();	
 }
 
@@ -47,30 +59,35 @@ bool Board::is_empty(Box box) {
 	return Board::board[box.row][box.column] == empty_box_value;
 }
 
-stack<Box> Board::empty_boxes() {
-	stack<Box> emptyBoxes;
+stack<Box*> Board::empty_boxes() {
+	stack<Box*> emptyBoxes;
 
 	for (int row = 0; row < sudoku_size; row++) {
 		for (int column = 0; column < sudoku_size; column++) {
-			Box box = Box(row, column);
+			Box* box = new Box(row, column);
 			
-			if (Board::is_empty(box)) {
+			if (Board::is_empty(*box)) {
 				emptyBoxes.push(box);
+			}
+			else {
+				delete box;
 			}
 		}
 	}
 	return emptyBoxes;
 }
 
-vector<SudokuMove> Board::legal_moves() {
-	vector<SudokuMove> legal_moves;
-	stack<Box> empty_boxes = Board::empty_boxes();
-	std::cout << " empty_boxes size " +std::to_string(empty_boxes.size()) << std::endl;
+vector<SudokuMove*> Board::legal_moves() {
+	vector<SudokuMove*> legal_moves;
+	stack<Box*> empty_boxes = Board::empty_boxes();
+	//std::cout << " empty_boxes size " +std::to_string(empty_boxes.size()) << std::endl;
 	bool empty_box_exists = !empty_boxes.empty();
-
+	bool first=true;
 	while (empty_box_exists) {
-		Box* box = &empty_boxes.top();
-		
+		Box* box = empty_boxes.top();
+		if (first) {
+			//std::cout << "legal moves of box [" + std::to_string(box->row) + "," + std::to_string(box->column) + "] ";
+		}
 		for (int value = 1; value < sudoku_size+1; value++) {
 			SudokuMove* move = new SudokuMove();
 	
@@ -78,13 +95,21 @@ vector<SudokuMove> Board::legal_moves() {
 			move->value = value;
 
 			if (is_move_valid(*move)) {
-				legal_moves.push_back(*move);
+				if (first) {
+					//std::cout << "value "+std::to_string(move->value);
+				}
+				legal_moves.push_back(move);
 			}
 		}
-
+		if (first) {
+			//std::cout << "" << std::endl;
+		}
+		
+		first = false;
 		empty_boxes.pop();
 		empty_box_exists = !empty_boxes.empty();
 	}
+	//std::cout << "legal moves " + std::to_string(legal_moves.size()) << std::endl;
 	return legal_moves;
 }
 
@@ -172,7 +197,7 @@ Box Board::find_container_starting_box(Box box) {
 }
 
 bool Board::game_over() {
-	stack<Box> empties = empty_boxes();
+	stack<Box*> empties = empty_boxes();
 	bool game_over = (empties.size() == 0);
 
 	if (game_over) {

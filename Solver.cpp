@@ -18,8 +18,17 @@ void Solver::solve() {
 		drawer->draw_board(to_solve->board);
 		return;
 	}
-	
-	vector<SudokuMove> moves = to_solve->legal_moves();
+
+	vector<SudokuMove*> moves = to_solve->legal_moves();
+	//std::cout << "Solver moves " + std::to_string(moves.size()) << std::endl;
+	for (int i = 0; i < moves.size(); i++) {
+		SudokuMove m = *moves[i];
+		Box b = *m.box;
+		int x = b.row;
+		int y = b.column;
+		//std::cout << std::to_string(x) +", "+ std::to_string(y)+" value "+std::to_string(m.value)+ "|";
+	}
+	//std::cout << ""<<std::endl;
 	bool move_exist = (moves.size() > 0);
 
 	if (!move_exist) {
@@ -28,15 +37,11 @@ void Solver::solve() {
 
 	for (int i = 0; i < moves.size(); i++) {
 		SudokuMove* m = new SudokuMove();
-		m =	&moves[i];
-		Box b = *m->box;
-		int x = b.row;
-		int y = b.column;
-		std::cout << std::to_string(x) +", "+ std::to_string(y) << std::endl;
+		m = moves[i];
 
-		to_solve->play_move(*m);
-		BoardDrawer* drawer = new BoardDrawer();
-		drawer->draw_board(to_solve->board);
+		to_solve->play_move(m);
+		//BoardDrawer* drawer = new BoardDrawer();
+		//drawer->draw_board(to_solve->board);
 		solve();
 
 		if (to_solve->game_over()) {

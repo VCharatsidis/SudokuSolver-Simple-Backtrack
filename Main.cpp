@@ -24,7 +24,7 @@ int main() {
 	move->value = 7;
 
 	//test play_move;
-	sudokuBoard->play_move(*move);
+	sudokuBoard->play_move(move);
 	drawer->draw_board(sudokuBoard->board);
 
 	//test undo_move;
@@ -32,12 +32,12 @@ int main() {
 	drawer->draw_board(sudokuBoard->board);
 
 	// test empty_boxes;
-	stack<Box> eb = sudokuBoard->empty_boxes();
+	stack<Box*> eb = sudokuBoard->empty_boxes();
 	int number_of_empty_boxes = eb.size();
 	cout << "empty boxes number " + std::to_string(number_of_empty_boxes) << std::endl;
 	
 	for (int i = 0; i < number_of_empty_boxes; i++) {
-		Box box = eb.top();
+		Box box = *eb.top();
 
 		int x = box.row;
 		int y = box.column;
@@ -88,18 +88,20 @@ int main() {
 	cout << "is valid [0,1] : "+ std::to_string(valid_value)+" "+ valid_string << std::endl;
 
 	//check legal_moves
-	vector<SudokuMove> moves = sudokuBoard->legal_moves();
+	/*vector<SudokuMove*> moves = sudokuBoard->legal_moves();
 	int size = moves.size();
-	cout << "legal moves of box [8,8] "+std::to_string(size);
+	cout << "legal moves of starting board " + std::to_string(size) << std::endl; 
+	cout << "legal moves of box [8,8] ";
 	
 	for (int i = 0; i < size; i++) {
-		SudokuMove current = moves[i];
+		SudokuMove current = *moves[i];
 		Box* currBox = current.box;
 
 		if (currBox->row == 8 && currBox->column == 8) {
 			cout << " " + std::to_string(current.value);
 		}	
 	}
+	cout << "" << std::endl;*/
 	//check solver
 	Solver solver = Solver(sudokuBoard);
 	solver.solve();
