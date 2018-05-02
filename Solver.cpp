@@ -51,5 +51,11 @@ void Solver::solve() {
 			to_solve->undo_move();
 		}
 	}
+	/*BoardDrawer* drawer = new BoardDrawer();
+	drawer->draw_board(to_solve->board);*/
 	
+	for (int i = 0; i < moves.size(); i++) {
+		delete moves[i];
+	}
+	moves.clear();
 }

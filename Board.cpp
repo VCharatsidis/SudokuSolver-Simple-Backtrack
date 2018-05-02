@@ -84,13 +84,13 @@ vector<SudokuMove*> Board::legal_moves() {
 	bool empty_box_exists = !empty_boxes.empty();
 	bool first=true;
 	while (empty_box_exists) {
-		Box* box = empty_boxes.top();
+		Box b = *empty_boxes.top();
 		if (first) {
 			//std::cout << "legal moves of box [" + std::to_string(box->row) + "," + std::to_string(box->column) + "] ";
 		}
 		for (int value = 1; value < sudoku_size+1; value++) {
 			SudokuMove* move = new SudokuMove();
-	
+			Box* box = new Box(b.row, b.column);
 			move->box = box;
 			move->value = value;
 
@@ -100,14 +100,20 @@ vector<SudokuMove*> Board::legal_moves() {
 				}
 				legal_moves.push_back(move);
 			}
-		}
-		if (first) {
-			//std::cout << "" << std::endl;
+			else {
+				delete box;
+				delete move;
+			}
 		}
 		
 		first = false;
+		delete empty_boxes.top();
 		empty_boxes.pop();
 		empty_box_exists = !empty_boxes.empty();
+	}
+
+	for (int i = 0; i < empty_boxes.size(); i++) {
+		delete empty_boxes.top();
 	}
 	//std::cout << "legal moves " + std::to_string(legal_moves.size()) << std::endl;
 	return legal_moves;
@@ -197,8 +203,7 @@ Box Board::find_container_starting_box(Box box) {
 }
 
 bool Board::game_over() {
-	stack<Box*> empties = empty_boxes();
-	bool game_over = (empties.size() == 0);
+	bool game_over = (empty_boxes().size() == 0);
 
 	if (game_over) {
 		return true;
