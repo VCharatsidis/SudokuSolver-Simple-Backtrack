@@ -33,6 +33,7 @@ void Solver::solve() {
 		int x = b.row;
 		int y = b.column;
 		std::cout << std::to_string(x) +", "+ std::to_string(y) << std::endl;
+
 		to_solve->play_move(*m);
 		BoardDrawer* drawer = new BoardDrawer();
 		drawer->draw_board(to_solve->board);

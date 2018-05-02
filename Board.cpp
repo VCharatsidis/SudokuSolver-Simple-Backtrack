@@ -25,8 +25,6 @@ Board::Board(vector<vector<int>> board) {
 	}*/
 }
 
-
-
 void Board::assign_value(Box box, int value) {
 	Board::board[box.row][box.column] = value;
 }
@@ -74,13 +72,13 @@ vector<SudokuMove> Board::legal_moves() {
 		Box* box = &empty_boxes.top();
 		
 		for (int value = 1; value < sudoku_size+1; value++) {
-			SudokuMove move ;
+			SudokuMove* move = new SudokuMove();
 	
-			move.box = box;
-			move.value = value;
+			move->box = box;
+			move->value = value;
 
-			if (is_move_valid(move)) {
-				legal_moves.push_back(move);
+			if (is_move_valid(*move)) {
+				legal_moves.push_back(*move);
 			}
 		}
 
