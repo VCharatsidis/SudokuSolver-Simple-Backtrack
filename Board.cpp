@@ -18,20 +18,17 @@ Board::Board(vector<vector<int>> board) {
 	
 }
 
-void Board::assign_value(Box* box, int value) {
-	Board::board[box->row][box->column] = value;
+void Board::assign_value(Box box, int value) {
+	Board::board[box.row][box.column] = value;
 }
 
 void Board::play_move(SudokuMove* move) {
 	int value = move->value;
 	//std::cout << "Play move " + std::to_string(move->box->row) + ", " + std::to_string(move->box->column) +" value: "+ std::to_string(move->value) << std::endl;
 	//std::cout << "" << std::endl;
-	assign_value(move->box, value);
+	assign_value(*move->box, value);
 	Board::moves_done.push(move);
 
-	stack<SudokuMove*> s;
-	//s = moves_done;
-	//print_stack(s);
 }
 
 void Board::print_stack(stack<SudokuMove*> c) {
@@ -51,7 +48,7 @@ void Board::undo_move() {
 	
 	SudokuMove move_to_undo = *Board::moves_done.top();
 	//std::cout << "Undo move "+std::to_string(move_to_undo.box->row)+", "+std::to_string(move_to_undo.box->column) + " value: " + std::to_string(move_to_undo.value) << std::endl;
-	assign_value(move_to_undo.box, empty_box_value);
+	assign_value(*move_to_undo.box, empty_box_value);
 	Board::moves_done.pop();	
 }
 
@@ -127,22 +124,25 @@ bool Board::is_move_valid(SudokuMove move) {
 	bool valid_row = is_value_valid(board[row], value);
 
 	if (valid_row) {
-		
 		vector<int> column_boxes = gather_column_boxes(column);
 		bool valid_column = is_value_valid(column_boxes, value);
 
-		if (valid_column) {
-			
-			Box box = find_container_starting_box(*move.box);
-			vector<int> container_boxes = gather_container_boxes(box);
-			bool valid_container = is_value_valid(container_boxes, value);
+		if (valid_column) {	
+			bool valid_container = is_value_valid_in_container(move);
 
-			if (valid_container) {
-				return true;
-			}
+			return valid_container;
 		}
 	}
 	return false;
+}
+
+bool Board::is_value_valid_in_container(SudokuMove move) {
+	int value = move.value;
+	Box box = find_container_starting_box(*move.box);
+	vector<int> container_boxes = gather_container_boxes(box);
+	bool is_valid_container = is_value_valid(container_boxes, value);
+
+	return is_valid_container;
 }
 
 vector<int> Board::gather_column_boxes(int given_column) {
@@ -198,8 +198,8 @@ Box Board::find_container_starting_box(Box box) {
 	int starting_box_x = container_x * container_size;
 	int starting_box_y = container_y * container_size;
 
-	Box* starting_box = new Box(starting_box_x, starting_box_y);
-	return *starting_box;
+	Box starting_box = Box(starting_box_x, starting_box_y);
+	return starting_box;
 }
 
 bool Board::game_over() {

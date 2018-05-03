@@ -12,50 +12,46 @@ Solver::Solver(Board* board) {
 };
 
 void Solver::solve() {
+	bool game_over = to_solve->game_over();
 
-	if (to_solve->game_over()) {
+	if (game_over) {
 		BoardDrawer* drawer = new BoardDrawer();
 		drawer->draw_board(to_solve->board);
 		return;
 	}
 
-	vector<SudokuMove*> moves = to_solve->legal_moves();
-	//std::cout << "Solver moves " + std::to_string(moves.size()) << std::endl;
-	for (int i = 0; i < moves.size(); i++) {
-		SudokuMove m = *moves[i];
-		Box b = *m.box;
-		int x = b.row;
-		int y = b.column;
-		//std::cout << std::to_string(x) +", "+ std::to_string(y)+" value "+std::to_string(m.value)+ "|";
+	for (int row = 0; row < size; row++) {
+		for (int column = 0; column < size; column++) {
+			Box box = Box(row, column);
+			bool is_empty = to_solve->is_empty(box);
+
+			if (is_empty) {
+				for (int value = 1; value < size + 1; value++) {
+					SudokuMove* move = new SudokuMove;
+					Box* box = new Box(row, column);
+					move->value = value;
+					move->box = box;
+					bool is_valid = to_solve->is_move_valid(*move);
+
+					if (is_valid) {
+						to_solve->play_move(move);
+						/*BoardDrawer* drawer = new BoardDrawer();
+						drawer->draw_board(to_solve->board);*/
+
+						solve();
+
+						if (to_solve->game_over()) {
+							return;
+						}
+						else {
+							to_solve->undo_move();
+							delete box;
+							delete move;
+						}
+					}
+				}
+			}
+		}	
 	}
-	//std::cout << ""<<std::endl;
-	bool move_exist = (moves.size() > 0);
-
-	if (!move_exist) {
-		return;
-	}
-
-	for (int i = 0; i < moves.size(); i++) {
-		SudokuMove* m = new SudokuMove();
-		m = moves[i];
-
-		to_solve->play_move(m);
-		//BoardDrawer* drawer = new BoardDrawer();
-		//drawer->draw_board(to_solve->board);
-		solve();
-
-		if (to_solve->game_over()) {
-			return;
-		}
-		else {
-			to_solve->undo_move();
-		}
-	}
-	/*BoardDrawer* drawer = new BoardDrawer();
-	drawer->draw_board(to_solve->board);*/
 	
-	for (int i = 0; i < moves.size(); i++) {
-		delete moves[i];
-	}
-	moves.clear();
 }

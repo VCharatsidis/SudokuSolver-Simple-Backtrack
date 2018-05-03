@@ -26,11 +26,12 @@ public:
 	static vector<int> gather_column_boxes(int given_column);
 	static vector<int> gather_container_boxes(Box box);
 	static bool game_over();
+	static bool is_value_valid_in_container(SudokuMove move);
 
 	static void print_stack(stack<SudokuMove*> c);
 
 private:
-	static void assign_value(Box* box, int value);
+	static void assign_value(Box box, int value);
 	static bool is_value_valid(vector<int> box_structure, int value);
 };
 
