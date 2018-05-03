@@ -16,6 +16,7 @@ int main() {
 
 	Board* sudokuBoard = new Board(hardestSudoku);
 	BoardDrawer* drawer = new BoardDrawer();
+	drawer->draw_board(hardestSudoku);
 
 	//check solver
 	Solver solver = Solver(sudokuBoard);

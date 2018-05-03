@@ -1,7 +1,6 @@
 #include "Solver.h";
 #include "BoardDrawer.cpp";
 
-//Board* Solver::board;
 int trials = 0;
 int size ;
 Board* to_solve;
@@ -35,8 +34,6 @@ void Solver::solve() {
 
 					if (is_valid) {
 						to_solve->play_move(move);
-						/*BoardDrawer* drawer = new BoardDrawer();
-						drawer->draw_board(to_solve->board);*/
 
 						solve();
 
@@ -54,5 +51,4 @@ void Solver::solve() {
 			}
 		}	
 	}
-	
 }
