@@ -10,7 +10,7 @@ using std::string;
 class BoardDrawer {
 public:
 	const string file_path = "C:\\Users\\vcharatsidis\\Desktop\\sudoku.txt";
-	const string horizontal_line_serparator = "----------------------";
+	const string horizontal_line_serparator = "------------------------------------------------------------------------------------------------";
 	const string vertical_line_separator = "| ";
 	const string empty_box = "_";
 
@@ -47,8 +47,13 @@ public:
 					if (value == 0) {
 						valueToString = empty_box;
 					}
-
-					myfile << valueToString + " ";
+					string space = " ";
+					if (boardSize > 9) {
+						if (value < 10) {
+							space += " ";
+						}
+					}
+					myfile << valueToString + space;
 				}
 			}
 			myfile << "\n";

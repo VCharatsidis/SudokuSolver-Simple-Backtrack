@@ -4,6 +4,7 @@
 int trials = 0;
 int size ;
 Board* to_solve;
+int steps = 0;
 
 Solver::Solver(Board* board) {
 	to_solve = board;
@@ -34,7 +35,13 @@ void Solver::solve() {
 
 					if (is_valid) {
 						to_solve->play_move(move);
+						steps++;
 
+						if (steps % 500000 == 0) {
+							std::cout << "steps " + std::to_string(steps) << std::endl;
+							BoardDrawer* drawer = new BoardDrawer();
+							drawer->draw_board(to_solve->board);
+						}
 						solve();
 
 						if (to_solve->game_over()) {
@@ -47,6 +54,7 @@ void Solver::solve() {
 						}
 					}
 				}
+				
 				return;
 			}
 		}	
