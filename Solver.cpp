@@ -50,6 +50,7 @@ void Solver::solve() {
 						}
 					}
 				}
+				return;
 			}
 		}	
 	}

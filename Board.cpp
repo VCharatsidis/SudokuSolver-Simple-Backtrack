@@ -14,8 +14,7 @@ stack<SudokuMove*> Board::moves_done;
 Board::Board(vector<vector<int>> board) {
 	sudoku_size = board.size();
 	container_size = sqrt(sudoku_size);
-	Board::board = board;
-	
+	Board::board = board;	
 }
 
 void Board::assign_value(Box box, int value) {
