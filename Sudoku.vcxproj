@@ -121,6 +121,7 @@
     <ClCompile Include="Solver.cpp" />
     <ClCompile Include="SudokuLibrary.cpp" />
     <ClCompile Include="SudokuMove.cpp" />
+    <ClCompile Include="SuperHard25x25Sudoku.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />

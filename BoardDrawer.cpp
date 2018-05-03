@@ -13,11 +13,11 @@ public:
 	const string horizontal_line_serparator = "----------------------";
 	const string vertical_line_separator = "| ";
 	const string empty_box = "_";
-	const int horizontalLines = 2;
 
 	void draw_board(vector<vector<int>> board) {
 		int boardSize = board.size();
-	
+		int container_size = sqrt(boardSize);
+		int horizontalLines = container_size-1;
 		int drawHeight = boardSize + horizontalLines;
 		int drawWidth = boardSize;
 
@@ -27,7 +27,7 @@ public:
 		int horizontal_line_counter = 0;
 
 		for (int row = 0; row < drawHeight; row++) {
-			bool drawHorizontalLine = ((row + 1) % 4 == 0);
+			bool drawHorizontalLine = ((row + 1) % (container_size+1) == 0);
 
 			if (drawHorizontalLine) {
 				myfile << horizontal_line_serparator;
@@ -35,7 +35,7 @@ public:
 			}
 			else {
 				for (int column = 0; column < drawWidth; column++) {
-					bool drawVerticalLine = (column % 3 == 0 && column > 0);
+					bool drawVerticalLine = (column % container_size == 0 && column > 0);
 
 					if (drawVerticalLine) {
 						myfile << vertical_line_separator;
@@ -54,15 +54,5 @@ public:
 			myfile << "\n";
 		}
 		myfile.close();
-	}
-
-	string place(int place) {
-		string space = "";
-
-		for (int i = 0; i < place; i++) {
-			space = space + " ";
-		}
-
-		return space;
 	}
 };

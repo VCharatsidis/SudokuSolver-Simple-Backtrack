@@ -12,7 +12,6 @@ int Board::starting_number_of_empty_squares;
 vector<vector<int>> Board::board;
 stack<SudokuMove*> Board::moves_done;
 
-
 Board::Board(vector<vector<int>> board) {
 	sudoku_size = board.size();
 	container_size = sqrt(sudoku_size);
