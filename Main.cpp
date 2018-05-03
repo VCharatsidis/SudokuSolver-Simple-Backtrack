@@ -1,16 +1,18 @@
 #include "Board.h";
-#include "HardestSudoku.cpp";
+//#include "HardestSudoku.cpp";
+#include "EasySudoku.cpp";
 #include "BoardDrawer.cpp";
 #include <iostream>;
 #include <string>;
 #include "Solver.h";
 
-using std::tuple;
 using std::cout;
 
 int main() {
-	HardestSudoku* hardestSudokuCreator = new HardestSudoku();
-	vector<vector<int>> hardestSudoku = hardestSudokuCreator->returnHardestSudoku();
+	//HardestSudoku hs;
+	EasySudoku es;
+
+	vector<vector<int>> hardestSudoku = es.return_board();
 
 	Board* sudokuBoard = new Board(hardestSudoku);
 	BoardDrawer* drawer = new BoardDrawer();

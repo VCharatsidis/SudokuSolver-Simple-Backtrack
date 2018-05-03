@@ -1,9 +1,9 @@
-#include<vector>;
-using std::vector;
 
-class HardestSudoku{
+#include "SudokuLibrary.cpp";
+
+class HardestSudoku : public ISudokuLibrary{
 public:
-	vector<vector<int>> returnHardestSudoku() {
+	vector<vector<int>> return_board() {
 		vector<vector<int>> hardestSudoku(9, vector<int>(9, 0));
 
 		hardestSudoku[0][0] = 8;
@@ -39,3 +39,5 @@ public:
 		return hardestSudoku;
 	}
 };
+
+
