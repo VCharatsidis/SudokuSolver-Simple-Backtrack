@@ -49,10 +49,12 @@ void Solver::solve() {
 						}
 						else {
 							to_solve->undo_move();
-							delete box;
-							delete move;
+							//delete box;
+							//delete move;
 						}
 					}
+					delete box;
+					delete move;
 				}
 				
 				return;

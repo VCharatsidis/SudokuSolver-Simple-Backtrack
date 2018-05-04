@@ -74,13 +74,13 @@ bool Board::is_move_valid(SudokuMove move) {
 	bool valid_row = is_value_valid(board[row], value);
 
 	if (valid_row) {
-		vector<int> column_boxes = gather_column_boxes(column);
-		bool valid_column = is_value_valid(column_boxes, value);
+		bool valid_container = is_value_valid_in_container(move);
 
-		if (valid_column) {	
-			bool valid_container = is_value_valid_in_container(move);
-
-			return valid_container;
+		if (valid_container) {
+			
+			vector<int> column_boxes = gather_column_boxes(column);
+			bool valid_column = is_value_valid(column_boxes, value);
+			return valid_column;
 		}
 	}
 	return false;
